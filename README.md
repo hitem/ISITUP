@@ -1,7 +1,7 @@
 # ISITUP
 ![image](https://user-images.githubusercontent.com/8977898/156038061-dd33261a-2ceb-4d3a-b34f-b28e7464319a.png)<br>
-Started out with isup.sh, ended up with isitup.sh<br>
-ICMP was not enough, rewrote and reused some parts, thanks gitnepal on github, pogchamp<br>
+Started out with **isup.sh**, ended up with **isitup.sh**<br>
+ICMP was not enough, rewrote and reused some parts, cred to gitnepal on github, pogchamp<br>
 
 ## Usage
 ./isitup.sh <list.txt><br>
