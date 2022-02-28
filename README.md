@@ -1,15 +1,12 @@
 # ISITUP
+![image](https://user-images.githubusercontent.com/8977898/156038061-dd33261a-2ceb-4d3a-b34f-b28e7464319a.png)<br>
+Started out with isup.sh, ended up with isitup.sh<br>
+ICMP was not enough, rewrote and reused some parts, thanks gitnepal on github, pogchamp<br>
 
- ▄ .▄▪  ▄▄▄▄▄▄▄▄ .• ▌ ▄ ·. .▄▄ · ▄▄▄ . ▄▄·  
-██▪▐███ •██  ▀▄.▀··██ ▐███▪▐█ ▀. ▀▄.▀·▐█ ▌▪
-██▀▐█▐█· ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█·▄▀▀▀█▄▐▀▀▪▄██ ▄▄
-██▌▐▀▐█▌ ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▄▪▐█▐█▄▄▌▐███▌ 
-▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀▀  ▀▀▀ ·▀▀▀ 
+## Usage
+./isitup.sh <list.txt><br>
+outputs two files called validlist.txt & notvalid.txt into /tmp/ in scriptdirectory<br>
 
-Inspired by isup. Needed something that was not ICMP.
 
-# Usage
-
-./isitup.sh <list.txt>
-
-outputs into tmp/validlist.txt and tmp/notvalid.txt
+## Dependecies
+Note that ive built in the installation of Hping3 and Lolcat. Remove if you have those already.
