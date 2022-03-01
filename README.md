@@ -1,5 +1,5 @@
 # ISITUP
-![image](https://user-images.githubusercontent.com/8977898/156212274-62e4dca3-3855-469c-84d3-6477e69f49d2.png)<br>
+![image](https://user-images.githubusercontent.com/8977898/156216456-1c9e0e50-91e9-4b0d-a944-1ef8eb5e6d5f.png)<br>
 Started out with **isup.sh**, ended up with **isitup.sh**<br>
 ICMP was not enough, rewrote and reused some parts, cred to ```gitnepal``` on github (```@___0x00```)<br>
 
