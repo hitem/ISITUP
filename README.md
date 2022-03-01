@@ -9,7 +9,7 @@ ICMP was not enough, rewrote and reused some parts, cred to ```gitnepal``` on gi
 > ./isitup.sh -h
 ```
 Outputs two files called ```validlist.txt``` & ```notvalid.txt``` into /tmp/ in scriptdirectory<br>
-Change ports you want to ping (if any other then ```80```,```443```,```8080``` in the isitup.sh
+Change ports you want to ping (if any other then ```80```,```443```,```8080``` in the isitup.sh)
 
 
 ## Dependencies
