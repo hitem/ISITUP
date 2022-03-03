@@ -29,14 +29,14 @@ echo -e "██▀▐█▐█· ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█
 echo -e "██▌▐▀▐█▌ ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▄▪▐█▐█▄▄▌▐███▌ " | lolcat
 echo -e "▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀▀  ▀▀▀ ·▀▀▀  " | lolcat
 echo -e ""
-echo -e "$ORANGE [+] hitemSec inspired by $RED@___0x00"
-  	echo ""
-	echo -e "$GREEN [+] hitemSec"
-	echo -e "$GREEN [+] https://twitter.com/hitemSec"
-    echo -e "$GREEN [+] https://github.com/hitem"
-	echo -e "$GREEN [-] Usage: isitup.sh <targetlist>"
-	echo -e "$GREEN [-] Usage: Modify script to include other ports on line 62"
-	exit
+echo -e "$ORANGE              ~:ISITUP:~"
+echo -e "$ORANGE Improve your reconnaissance by$RED hitemSec"
+echo ""
+echo -e "$GREEN [+] https://twitter.com/hitemSec"
+echo -e "$GREEN [+] https://github.com/hitem"
+echo -e "$GREEN [-] Usage: isitup.sh [-h --help] [<targetlist>]"
+echo -e "$ORANGE __________________________________________"
+exit
 fi
 
 if [[ $TARGET == "--help" ]] || [[ $TARGET == "-h" ]]; then
@@ -46,25 +46,29 @@ echo -e "██▀▐█▐█· ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█
 echo -e "██▌▐▀▐█▌ ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▄▪▐█▐█▄▄▌▐███▌ " | lolcat
 echo -e "▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀▀  ▀▀▀ ·▀▀▀  " | lolcat
 echo -e ""
-echo -e "$ORANGE [+] hitemSec inspired by $RED@___0x00"
-        echo ""
-	echo -e "$GREEN [+] hitemSec"
-	echo -e "$GREEN [+] https://twitter.com/hitemSec"
-    echo -e "$GREEN [+] https://github.com/hitem"
-    echo -e "$GREEN [+] Find alive host from chosen list"
-    echo -e "$GREEN [-] Usage: isitup.sh <targetlist>,$ORANGE example ./isitup.sh myiplist.txt"
-	echo -e "$GREEN [-] Usage: Modify script to include other ports on line 62"
-    exit
+echo -e "$ORANGE              ~:ISITUP:~"
+echo -e "$ORANGE Improve your reconnaissance by$RED hitemSec"
+echo ""
+echo -e "$GREEN [+] https://twitter.com/hitemSec"
+echo -e "$GREEN [+] https://github.com/hitem"
+echo -e "$GREEN [-]$BLUE Usage: isitup.sh [<targetlist>],$ORANGE example ./isitup.sh myiplist.txt"
+echo -e "$GREEN [-]$BLUE Usage: Modify script to include other ports on line 83"
+echo -e "$ORANGE __________________________________________"
+exit
 fi
 
 if [ ! -f $TARGET ]; then
-    echo -e "$IRED ######################     [FILE NOT FOUND] "
-    exit
+echo -e ""
+echo -e "$IRED ######################     [FILE NOT FOUND] "
+echo -e ""
+echo -e "$GREEN [-]$BLUE Usage: isitup.sh [-h --help] [<targetlist>],$ORANGE example ./isitup.sh myiplist.txt"
+exit
 fi
 
 REMOVEDIR=$(rm -r "$CURRENT_PATH/tmp/")
 CREATEDIR=$(mkdir -p "$CURRENT_PATH/tmp/")
-FILENAME=$( basename $TARGET )
+FILENAME=$(basename $TARGET)
+
 echo -e " ▄ .▄▪  ▄▄▄▄▄▄▄▄ .• ▌ ▄ ·. .▄▄ · ▄▄▄ . ▄▄·  " | lolcat
 echo -e "██▪▐███ •██  ▀▄.▀··██ ▐███▪▐█ ▀. ▀▄.▀·▐█ ▌▪ " | lolcat
 echo -e "██▀▐█▐█· ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█·▄▀▀▀█▄▐▀▀▪▄██ ▄▄ " | lolcat
@@ -81,7 +85,6 @@ do
     then
         echo -e "$IGREEN [+] $ENTRIES $RESET"
         echo -e " $ENTRIES" | tee -a $CURRENT_PATH/tmp/valid-$FILENAME > /dev/null 2>&1
-
     else
         echo -e " $ENTRIES" | tee -a $CURRENT_PATH/tmp/notvalid-$FILENAME 
     fi
