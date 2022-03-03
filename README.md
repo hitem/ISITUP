@@ -10,7 +10,9 @@ ICMP was not enough (from isup), so i rewrote, added and reused some parts and e
 > ./isitup.sh [-h --help]
 ```
 Outputs two files called ```validlist.txt``` & ```notvalid.txt``` into /tmp/ in scriptdirectory.<br>
-Change ports you want to ping (if any other then ```80```,```443```,```8080``` in the isitup.sh).<br>
+Change ports you want to ping (if any other then ```80```,```443```,```8080``` in the isitup.sh).<br><br>
+![image](https://i.imgur.com/wBw1Vir.gif)
+
 
 ## Dependencies
 Note that ive built in the installation of Hping3, prips and Lolcat. Remove if you have those already.<br>
@@ -18,4 +20,4 @@ Note that ive built in the installation of Hping3, prips and Lolcat. Remove if y
 > sudo apt-get -y install lolcat hping3 prips
 ```
 ## Credits
-Cred to ```gitnepal``` on github and the creator ```@___0x00``` of isup<br>
+Cred to ```gitnepal``` on github and the creator ```@___0x00``` of isup where i started this journey<br>
