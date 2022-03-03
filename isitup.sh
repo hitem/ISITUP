@@ -52,7 +52,7 @@ echo ""
 echo -e "$GREEN [+] https://twitter.com/hitemSec"
 echo -e "$GREEN [+] https://github.com/hitem"
 echo -e "$GREEN [-]$BLUE Usage: isitup.sh [<targetlist>],$ORANGE example ./isitup.sh myiplist.txt"
-echo -e "$GREEN [-]$BLUE Usage: Modify script to include other ports on line 83"
+echo -e "$GREEN [-]$BLUE Usage: Modify script to include other ports on line 85"
 echo -e "$ORANGE __________________________________________"
 exit
 fi
@@ -75,7 +75,9 @@ echo -e "██▀▐█▐█· ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█
 echo -e "██▌▐▀▐█▌ ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▄▪▐█▐█▄▄▌▐███▌ " | lolcat
 echo -e "▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀▀  ▀▀▀ ·▀▀▀  " | lolcat
 echo -e ""
-echo -e "$ORANGE [+] hitemSec inspired by $RED@___0x00"
+echo -e "$ORANGE              ~:ISITUP:~"
+echo -e "$ORANGE Improve your reconnaissance by$RED hitemSec"
+echo -e ""
 echo -e " ######################################################     [INITIATING] " | lolcat
 echo -e ""
 for ENTRIES in $(cat $TARGET) 
