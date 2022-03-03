@@ -60,6 +60,7 @@ echo -e "$ORANGE __________________________________________"
 exit
 fi
 
+CREATEDIR=$(mkdir -p "$CURRENT_PATH/tmp/")
 if [[ $TARGET == "--scope" ]] || [[ $TARGET == "-s" ]]; then
 echo -e "  ▄ .▄▪  ▄▄▄▄▄▄▄▄ .• ▌ ▄ ·. .▄▄ · ▄▄▄ . ▄▄·  " | lolcat
 echo -e " ██▪▐███ •██  ▀▄.▀··██ ▐███▪▐█ ▀. ▀▄.▀·▐█ ▌▪ " | lolcat
@@ -69,10 +70,10 @@ echo -e " ▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀
 echo -e ""
 echo -e "$ORANGE              ~:ISITUP:~"
 echo -e "$ORANGE Improve your reconnaissance by$RED hitemSec"
-echo -e "$ORANGE __________________________________________$RESET"
 echo -e ""
 echo -e "$BLUE Enter a valid IP scope, example$RESET 192.168.0.0/24$BLUE ,$RESET 10.0.1.0/16"
 echo -e "$BLUE If you have selected a large scope, this process will take time! $RESET"
+echo -e "$ORANGE __________________________________________$RESET"
 echo -e ""
 echo -e " Enter your scope and press $IGREEN[ENTER]$RESET to begin"
 read SCOPE
