@@ -1,5 +1,5 @@
 # ISITUP
-![image](https://user-images.githubusercontent.com/8977898/156216699-d7334be0-f567-446f-b9be-c29870d63c27.png)<br>
+![image](https://user-images.githubusercontent.com/8977898/156616941-3a03d0ed-ce68-4c90-b97f-8bf4e3efcb80.png)<br>
 Started out with **isup.sh**, ended up with **isitup.sh**<br>
 ICMP was not enough, rewrote and reused some parts, cred to ```gitnepal``` on github and the creator ```@___0x00```<br>
 
@@ -18,3 +18,4 @@ Note that ive built in the installation of Hping3, prips and Lolcat. Remove if y
 ```bash
 > sudo apt-get -y install lolcat hping3 prips
 ```
+
