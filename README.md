@@ -6,15 +6,15 @@ ICMP was not enough, rewrote and reused some parts, cred to ```gitnepal``` on gi
 ## Usage
 ```bash
 > ./isitup.sh list.txt
-> ./isitup.sh -h
+> ./isitup.sh [-s --scope]
+> ./isitup.sh [-h --help]
 ```
-Outputs two files called ```validlist.txt``` & ```notvalid.txt``` into /tmp/ in scriptdirectory<br>
-Change ports you want to ping (if any other then ```80```,```443```,```8080``` in the isitup.sh)<br>
-Note that there are two places you can do this, one for ```scope``` and one for ```list``` scan<br>
+Outputs two files called ```validlist.txt``` & ```notvalid.txt``` into /tmp/ in scriptdirectory.<br>
+Change ports you want to ping (if any other then ```80```,```443```,```8080``` in the isitup.sh).<br>
+Note that there are two places you can do this, one for ```scope``` and one for ```list``` scan.<br>
 
 ## Dependencies
 Note that ive built in the installation of Hping3, prips and Lolcat. Remove if you have those already.<br>
-Row 21 of the script<br>
 ```bash
 > sudo apt-get -y install lolcat hping3 prips
 ```
