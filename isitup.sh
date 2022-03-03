@@ -54,7 +54,7 @@ echo -e "$GREEN [+] https://github.com/hitem"
 echo -e "$GREEN [-]$BLUE Usage: isitup.sh [-h --help] [-s --scope] [targetlist]"
 echo -e "$GREEN [-]$BLUE Usage: Modify script to include other ports on line 85 or 135"
 echo -e "$GREEN [-]$ORANGE Example ./isitup.sh myiplist.txt"
-echo -e "$GREEN [-]$ORANGE Example ./isitup.sh -s$RESET Then proceed to enter your IP-Scope"
+echo -e "$GREEN [-]$ORANGE Example ./isitup.sh -s"
 echo -e "$GREEN [-]$ORANGE Example ./isitup.sh --help"
 echo -e "$ORANGE __________________________________________"
 exit
