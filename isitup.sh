@@ -1,8 +1,15 @@
 #!/bin/bash
 
-# Started out with isup.sh, ended up with isitup.sh
-# ICMP was not enough, rewrote and reused some parts, thanks @___0x00 (github: gitnepal), pogchamp
-# hitemSec 2022
+# # # # # # # # # # # # # # # # # # # # # # # #
+# made by hitemSec
+# purpose: 
+#  More reliant checks for domains and ip-lists!
+#  Started out with isup.sh, ended up with isitup.sh
+#  ICMP was not enough, rewrote and reused some parts, thanks @___0x00 (github: gitnepal), pogchamp
+# github: https://github.com/hitem
+# twitter: https://twitter.com/hitemSec
+# # # # # # # # # # # # # # # # # # # # # # # #
+
 
 #COLORS
 BLUE='\033[94m'
@@ -21,13 +28,17 @@ CURRENT_PATH=$(pwd)
 sudo apt-get -y install lolcat hping3 prips
 clear
 
-#CODE
-if [ -z $TARGET ]; then
+themagichitemstuff () {
 echo -e "  ▄ .▄▪  ▄▄▄▄▄▄▄▄ .• ▌ ▄ ·. .▄▄ · ▄▄▄ . ▄▄·  \n ██▪▐███ •██  ▀▄.▀··██ ▐███▪▐█ ▀. ▀▄.▀·▐█ ▌▪ \n ██▀▐█▐█· ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█·▄▀▀▀█▄▐▀▀▪▄██ ▄▄ \n ██▌▐▀▐█▌ ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▄▪▐█▐█▄▄▌▐███▌ \n ▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀▀  ▀▀▀ ·▀▀▀  " | lolcat
 echo -e ""
 echo -e "$ORANGE              ~:ISITUP:~"
 echo -e "$ORANGE Improve your reconnaissance by$RED hitemSec"
 echo -e ""
+}
+
+#CODE
+if [ -z $TARGET ]; then
+themagichitemstuff
 echo -e "$GREEN [+] https://twitter.com/hitemSec"
 echo -e "$GREEN [+] https://github.com/hitem"
 echo -e "$GREEN [-] Usage: isitup.sh [-h --help] [-s --scope] [<targetlist>]"
@@ -36,15 +47,11 @@ exit
 fi
 
 if [[ $TARGET == "--help" ]] || [[ $TARGET == "-h" ]]; then
-echo -e "  ▄ .▄▪  ▄▄▄▄▄▄▄▄ .• ▌ ▄ ·. .▄▄ · ▄▄▄ . ▄▄·  \n ██▪▐███ •██  ▀▄.▀··██ ▐███▪▐█ ▀. ▀▄.▀·▐█ ▌▪ \n ██▀▐█▐█· ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█·▄▀▀▀█▄▐▀▀▪▄██ ▄▄ \n ██▌▐▀▐█▌ ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▄▪▐█▐█▄▄▌▐███▌ \n ▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀▀  ▀▀▀ ·▀▀▀  " | lolcat
-echo -e ""
-echo -e "$ORANGE              ~:ISITUP:~"
-echo -e "$ORANGE Improve your reconnaissance by$RED hitemSec"
-echo -e ""
+themagichitemstuff
 echo -e "$GREEN [+] https://twitter.com/hitemSec"
 echo -e "$GREEN [+] https://github.com/hitem"
 echo -e "$GREEN [-]$BLUE Usage: isitup.sh [-h --help] [-s --scope] [targetlist]"
-echo -e "$GREEN [-]$BLUE Usage: Modify script to include other ports on line 85 or 135"
+echo -e "$GREEN [-]$BLUE Usage: Modify script to include other ports, default:$RESET 80$BLUE,$RESET 443$BLUE,$RESET 8080"
 echo -e "$GREEN [-]$ORANGE Example ./isitup.sh myiplist.txt"
 echo -e "$GREEN [-]$ORANGE Example ./isitup.sh -s"
 echo -e "$GREEN [-]$ORANGE Example ./isitup.sh --help"
@@ -54,11 +61,7 @@ fi
 
 CREATEDIR=$(mkdir -p "$CURRENT_PATH/tmp/")
 if [[ $TARGET == "--scope" ]] || [[ $TARGET == "-s" ]]; then
-echo -e "  ▄ .▄▪  ▄▄▄▄▄▄▄▄ .• ▌ ▄ ·. .▄▄ · ▄▄▄ . ▄▄·  \n ██▪▐███ •██  ▀▄.▀··██ ▐███▪▐█ ▀. ▀▄.▀·▐█ ▌▪ \n ██▀▐█▐█· ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█·▄▀▀▀█▄▐▀▀▪▄██ ▄▄ \n ██▌▐▀▐█▌ ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▄▪▐█▐█▄▄▌▐███▌ \n ▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀▀  ▀▀▀ ·▀▀▀  " | lolcat
-echo -e ""
-echo -e "$ORANGE              ~:ISITUP:~"
-echo -e "$ORANGE Improve your reconnaissance by$RED hitemSec"
-echo -e ""
+themagichitemstuff
 echo -e "$BLUE Enter a valid IP scope, example$RESET 192.168.0.0/24$BLUE ,$RESET 10.0.1.0/16"
 echo -e "$BLUE If you have selected a large scope, this process will take time! $RESET"
 echo -e "$ORANGE __________________________________________$RESET"
@@ -93,6 +96,7 @@ exit
 fi
 
 if [ ! -f $TARGET ]; then
+themagichitemstuff
 echo -e ""
 echo -e "$IRED ######################     [FILE NOT FOUND] "
 echo -e ""
@@ -105,11 +109,6 @@ REMOVEDIR=$(rm -r "$CURRENT_PATH/tmp/")
 CREATEDIR=$(mkdir -p "$CURRENT_PATH/tmp/")
 FILENAME=$(basename $TARGET)
 
-echo -e "  ▄ .▄▪  ▄▄▄▄▄▄▄▄ .• ▌ ▄ ·. .▄▄ · ▄▄▄ . ▄▄·  \n ██▪▐███ •██  ▀▄.▀··██ ▐███▪▐█ ▀. ▀▄.▀·▐█ ▌▪ \n ██▀▐█▐█· ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█·▄▀▀▀█▄▐▀▀▪▄██ ▄▄ \n ██▌▐▀▐█▌ ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▄▪▐█▐█▄▄▌▐███▌ \n ▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀▀  ▀▀▀ ·▀▀▀  " | lolcat
-echo -e ""
-echo -e "$ORANGE              ~:ISITUP:~"
-echo -e "$ORANGE Improve your reconnaissance by$RED hitemSec"
-echo -e ""
 echo -e " ######################################################     [INITIATING] " | lolcat
 echo -e ""
 for ENTRIES in $(cat $TARGET) 
