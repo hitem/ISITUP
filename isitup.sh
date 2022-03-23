@@ -10,6 +10,7 @@
 # twitter: https://twitter.com/hitemSec
 # # # # # # # # # # # # # # # # # # # # # # # #
 
+
 #COLORS
 BLUE='\033[94m'
 RED='\033[91m'
@@ -83,7 +84,8 @@ do
         echo -e "$IGREEN [+] $ENTRIES $RESET"
         echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/valid-$FILENAME > /dev/null 2>&1
     else
-        echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/notvalid-$FILENAME 
+    	echo -e " $ENTRIES $RESET"
+        echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/notvalid-$FILENAME > /dev/null 2>&1
     fi
 done
 echo -e ""
@@ -122,17 +124,20 @@ do
     hping3 -S -p 80,443,8080 -c 1 -w 1 $ENTRIES > /dev/null 2>&1
     if [[ $? -eq 0 ]];
     then
-        echo -e "$IGREEN [+] $ENTRIES $RESET"
-        echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/valid-$FILENAME > /dev/null 2>&1
+    echo -e "$IGREEN [+] $ENTRIES $RESET"
+	echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/valid-$FILENAME > /dev/null 2>&1
     else
-        echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/notvalid-$FILENAME 
+	echo -e " $ENTRIES $RESET"
+    echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/notvalid-$FILENAME > /dev/null 2>&1
     fi
 done
 echo -e ""
 echo -e "$BLUE  Valid domains saved to: $ORANGE tmp/valid-$FILENAME  $RESET"
 echo -e "$BLUE  Invalid domains saved to: $ORANGE tmp/notvalid-$FILENAME  $RESET"
 echo -e ""
-
+#TRIMTIME
+#awk '{gsub(/[[:blank:]]/,""); print}' tmp/valid-$FILENAME | cat -n 
+#awk '{gsub(/[[:blank:]]/,""); print}' tmp/notvalid-$FILENAME | cat -n 
 ALIVEC=$(cat $CURRENT_PATH/tmp/valid-$FILENAME | sort -u | wc -l)
 DOWNC=$(cat $CURRENT_PATH/tmp/notvalid-$FILENAME | sort -u | wc -l)
 TOTALC=$(cat $TARGET | sort -u | wc -l )
