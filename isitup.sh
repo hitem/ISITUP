@@ -81,9 +81,9 @@ do
     if [[ $? -eq 0 ]];
     then
         echo -e "$IGREEN [+] $ENTRIES $RESET"
-        echo -e " $ENTRIES" | tee -a $CURRENT_PATH/tmp/valid-$FILENAME > /dev/null 2>&1
+        echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/valid-$FILENAME > /dev/null 2>&1
     else
-        echo -e " $ENTRIES" | tee -a $CURRENT_PATH/tmp/notvalid-$FILENAME 
+        echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/notvalid-$FILENAME 
     fi
 done
 echo -e ""
@@ -123,9 +123,9 @@ do
     if [[ $? -eq 0 ]];
     then
         echo -e "$IGREEN [+] $ENTRIES $RESET"
-        echo -e " $ENTRIES" | tee -a $CURRENT_PATH/tmp/valid-$FILENAME > /dev/null 2>&1
+        echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/valid-$FILENAME > /dev/null 2>&1
     else
-        echo -e " $ENTRIES" | tee -a $CURRENT_PATH/tmp/notvalid-$FILENAME 
+        echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/notvalid-$FILENAME 
     fi
 done
 echo -e ""
