@@ -11,7 +11,7 @@ ICMP was not enough (from isup), so i rewrote, added and reused some parts and e
 ```
 Outputs two files called ```validlist.txt``` & ```notvalid.txt``` into /tmp/ in scriptdirectory.<br>
 Change ports you want to ping (if any other then ```80```,```443```,```8080``` in the isitup.sh).<br><br>
-![image](https://i.imgur.com/IA9z8Z0.gif)
+![image](https://i.imgur.com/T6qPNTI.gif)
 
 
 ## Dependencies
