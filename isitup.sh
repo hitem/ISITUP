@@ -89,13 +89,13 @@ do
     fi
 done
 echo -e ""
-echo -e "$BLUE  Valid domains saved to: $ORANGE tmp/valid-$FILENAME  $RESET"
-echo -e "$BLUE  Invalid domains saved to: $ORANGE tmp/notvalid-$FILENAME  $RESET"
+echo -e "$BLUE Valid domains saved to: $ORANGE tmp/valid-$FILENAME  $RESET"
+echo -e "$BLUE Invalid domains saved to: $ORANGE tmp/notvalid-$FILENAME  $RESET"
 echo -e ""
 ALIVEC=$(cat $CURRENT_PATH/tmp/valid-$FILENAME | sort -u | wc -l)
 DOWNC=$(cat $CURRENT_PATH/tmp/notvalid-$FILENAME | sort -u | wc -l)
 TOTALC=$(cat $CURRENT_PATH/tmp/ManualScope.txt | sort -u | wc -l )
-echo -e "$BLUE  [TOTAL]: ${TOTALC} $RESET     $IGREEN[ALIVE]: ${ALIVEC} $RESET     $IRED[DOWN]: ${DOWNC}"
+echo -e "$BLUE [TOTAL]: ${TOTALC} $RESET     $IGREEN[ALIVE]: ${ALIVEC} $RESET     $IRED[DOWN]: ${DOWNC}"
 echo -e " ##################################################     [COMPLETED] " | lolcat
 exit
 fi
@@ -104,7 +104,7 @@ if [ ! -f $TARGET ]; then
 hitemsec
 hitemsecc
 echo -e ""
-echo -e "$IRED ----------[FILE NOT FOUND]----------"
+echo -e "$IRED ----------:[FILE NOT FOUND]:----------"
 echo -e ""
 echo -e "$GREEN [+]$BLUE Usage: isitup.sh [targetlist]"
 echo -e "$GREEN [-]$ORANGE Example ./isitup.sh myiplist.txt"
