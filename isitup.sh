@@ -89,7 +89,7 @@ do
     fi
 done
 echo -e ""
-echo -e "$BLUE Valid domains saved to: $ORANGE tmp/valid-$FILENAME  $RESET"
+echo -e "$BLUE Valid domains saved to: $ORANGE   tmp/valid-$FILENAME  $RESET"
 echo -e "$BLUE Invalid domains saved to: $ORANGE tmp/notvalid-$FILENAME  $RESET"
 echo -e ""
 ALIVEC=$(cat $CURRENT_PATH/tmp/valid-$FILENAME | sort -u | wc -l)
@@ -132,12 +132,9 @@ do
     fi
 done
 echo -e ""
-echo -e "$BLUE Valid domains saved to: $ORANGE tmp/valid-$FILENAME  $RESET"
+echo -e "$BLUE Valid domains saved to: $ORANGE   tmp/valid-$FILENAME  $RESET"
 echo -e "$BLUE Invalid domains saved to: $ORANGE tmp/notvalid-$FILENAME  $RESET"
-echo -e ""
-#TRIMTIME
-#awk '{gsub(/[[:blank:]]/,""); print}' tmp/valid-$FILENAME | cat -n 
-#awk '{gsub(/[[:blank:]]/,""); print}' tmp/notvalid-$FILENAME | cat -n 
+echo -e "" 
 ALIVEC=$(cat $CURRENT_PATH/tmp/valid-$FILENAME | sort -u | wc -l)
 DOWNC=$(cat $CURRENT_PATH/tmp/notvalid-$FILENAME | sort -u | wc -l)
 TOTALC=$(cat $TARGET | sort -u | wc -l )
