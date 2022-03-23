@@ -74,7 +74,7 @@ echo -e " Enter your scope and press $IGREEN[ENTER]$RESET to begin"
 read SCOPE
 prips $SCOPE > $CURRENT_PATH/tmp/ManualScope.txt
 echo -e ""
-echo -e " ######################################################     [INITIATING] " | lolcat
+echo -e " ##################################################     [INITIATING] " | lolcat
 echo -e ""
 for ENTRIES in $(cat $CURRENT_PATH/tmp/ManualScope.txt) 
 do
@@ -96,7 +96,7 @@ ALIVEC=$(cat $CURRENT_PATH/tmp/valid-$FILENAME | sort -u | wc -l)
 DOWNC=$(cat $CURRENT_PATH/tmp/notvalid-$FILENAME | sort -u | wc -l)
 TOTALC=$(cat $CURRENT_PATH/tmp/ManualScope.txt | sort -u | wc -l )
 echo -e "$BLUE  [TOTAL]: ${TOTALC} $RESET     $IGREEN[ALIVE]: ${ALIVEC} $RESET     $IRED[DOWN]: ${DOWNC}"
-echo -e " ######################################################     [COMPLETED] " | lolcat
+echo -e " ##################################################     [COMPLETED] " | lolcat
 exit
 fi
 
@@ -104,7 +104,7 @@ if [ ! -f $TARGET ]; then
 hitemsec
 hitemsecc
 echo -e ""
-echo -e "$IRED ######################     [FILE NOT FOUND] "
+echo -e "$IRED ----------[FILE NOT FOUND]----------"
 echo -e ""
 echo -e "$GREEN [+]$BLUE Usage: isitup.sh [targetlist]"
 echo -e "$GREEN [-]$ORANGE Example ./isitup.sh myiplist.txt"
@@ -117,23 +117,23 @@ FILENAME=$(basename $TARGET)
 hitemsec
 hitemsecc
 echo -e ""
-echo -e " ######################################################     [INITIATING] " | lolcat
+echo -e " ##################################################     [INITIATING] " | lolcat
 echo -e ""
 for ENTRIES in $(cat $TARGET) 
 do
     hping3 -S -p 80,443,8080 -c 1 -w 1 $ENTRIES > /dev/null 2>&1
     if [[ $? -eq 0 ]];
     then
-    echo -e "$IGREEN [+] $ENTRIES $RESET"
+        echo -e "$IGREEN [+] $ENTRIES $RESET"
 	echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/valid-$FILENAME > /dev/null 2>&1
     else
 	echo -e " $ENTRIES $RESET"
-    echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/notvalid-$FILENAME > /dev/null 2>&1
+        echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/notvalid-$FILENAME > /dev/null 2>&1
     fi
 done
 echo -e ""
-echo -e "$BLUE  Valid domains saved to: $ORANGE tmp/valid-$FILENAME  $RESET"
-echo -e "$BLUE  Invalid domains saved to: $ORANGE tmp/notvalid-$FILENAME  $RESET"
+echo -e "$BLUE Valid domains saved to: $ORANGE tmp/valid-$FILENAME  $RESET"
+echo -e "$BLUE Invalid domains saved to: $ORANGE tmp/notvalid-$FILENAME  $RESET"
 echo -e ""
 #TRIMTIME
 #awk '{gsub(/[[:blank:]]/,""); print}' tmp/valid-$FILENAME | cat -n 
@@ -141,5 +141,5 @@ echo -e ""
 ALIVEC=$(cat $CURRENT_PATH/tmp/valid-$FILENAME | sort -u | wc -l)
 DOWNC=$(cat $CURRENT_PATH/tmp/notvalid-$FILENAME | sort -u | wc -l)
 TOTALC=$(cat $TARGET | sort -u | wc -l )
-echo -e "$BLUE  [TOTAL]: ${TOTALC} $RESET     $IGREEN[ALIVE]: ${ALIVEC} $RESET     $IRED[DOWN]: ${DOWNC}"
-echo -e " ######################################################     [COMPLETED] " | lolcat
+echo -e "$BLUE [TOTAL]: ${TOTALC} $RESET     $IGREEN[ALIVE]: ${ALIVEC} $RESET     $IRED[DOWN]: ${DOWNC}"
+echo -e " ##################################################     [COMPLETED] " | lolcat
