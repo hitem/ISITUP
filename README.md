@@ -27,7 +27,7 @@ Note that ive built in the installation of Hping3, prips and Lolcat. Remove if y
 > ./isitup.py -i /root/usr/input.txt -o /root/usr/output.txt
 ```
 Before we start: Python version only works with domains and with http/https prefix (```https://example.com```). \
-When you luanch the ```isitup.py``` you have to suplly the following arguments: ```-i <path to file>``` and ```-o <path to file>```, it will go ahead and send a request.get command using http socks and save the successfull requests to the ```-o <path to file>```. \
+When you launch the ```isitup.py``` you have to supply the following arguments: ```-i <path to file>``` and ```-o <path to file>```, it will go ahead and send a request.get command using http socks and save the successful requests to the ```-o <path to file>```. \
 ![image](https://user-images.githubusercontent.com/8977898/185992964-fcfdc759-2669-4a6e-9b15-7e8d6d3f6b21.png) \
 You can integrate the script into your reconnaissance tools and use variables for input/output, but in that case i could recommend ```httpx``` (faster for large lists)
 
