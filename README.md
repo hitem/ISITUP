@@ -22,11 +22,12 @@ Note that ive built in the installation of Hping3, prips and Lolcat. Remove if y
 
 ## Bonus: Python
 ```python
-> ./isitup.py
+> ./isitup.py -h
+> ./isitup.py -i [--input_file] -o [--output_file]
+> ./isitup.py -i /root/usr/input.txt -o /root/usr/output.txt
 ```
-Before we start: Python version only works with domains (```example.com```) and with http/https (```https://example.com```). \
-It requiers a little more of you to integrate the python version, but once you do its solid! \
-When you luanch the ```isitup.py``` you are asked to enter a ```input``` and ```output``` file, note that the file must contain domainlist with the http/https prefixes, it will go ahead and send a request.get command using http socks and save the successfull requests to the ```outputfile```. \
-![image](https://user-images.githubusercontent.com/8977898/185981647-ca686555-c160-4be0-9dd0-e6a70d9ed27c.png) \
+Before we start: Python version only works with domains and with http/https prefix (```https://example.com```). \
+When you luanch the ```isitup.py``` you have to suplly the following arguments: ```-i <path to file>``` and ```-o <path to file>```, it will go ahead and send a request.get command using http socks and save the successfull requests to the ```-o <path to file>```. \
+![image](https://user-images.githubusercontent.com/8977898/185992964-fcfdc759-2669-4a6e-9b15-7e8d6d3f6b21.png) \
 You can hardcore the input/output file to integrate the script into your reconnaissance tools, but in that case i could recommend ```httpx```
 

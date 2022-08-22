@@ -15,6 +15,7 @@ import requests
 import json
 import time
 import sys
+import getopt
 
 #COLORS
 class bcolors:
@@ -31,40 +32,59 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 #VARIABLES & File inputs
-#For static input/output (incase you want to make this tool part of your reconnaissance chain) you have to replace input_file and output_file with these lines:
-#input_file = ('c:\\users\\myuser\\desktop\\test.txt')
-#output_file = ('c:\\users\\myuser\\desktop\\test2.txt')
 print(f"{bcolors.HEADER}  ▄ .▄▪  ▄▄▄▄▄▄▄▄ .• ▌ ▄ ·. .▄▄ · ▄▄▄ . ▄▄·  \n ██▪▐███ •██  ▀▄.▀··██ ▐███▪▐█ ▀. ▀▄.▀·▐█ ▌▪ \n ██▀▐█▐█· ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█·▄▀▀▀█▄▐▀▀▪▄██ ▄▄ \n ██▌▐▀▐█▌ ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▄▪▐█▐█▄▄▌▐███▌ \n ▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀▀  ▀▀▀ ·▀▀▀  {bcolors.ENDC}")
 print(f"{bcolors.OKGRAY}Improve your reconnaissance by{bcolors.ENDC} {bcolors.OKRED}hitemSec{bcolors.ENDC}")
-print("")
-input_file = input('Enter the file to\033[1m \033[93mimport\033[0m: ')
-output_file = input('Enter the file to\033[1m \033[96mexport\033[0m: ')
+print (f"{bcolors.OKGRAY}How-To: {bcolors.WARNING}isitup.py -h{bcolors.ENDC}")
 print("")
 
-#THE MAGIC
-try:
-    finput_file = open(input_file,'r').read().splitlines()
-except Exception as e:
-    print(f"{bcolors.OKRED}Please insert a valid file ({bcolors.WARNING}check file or directory{bcolors.OKRED}){bcolors.ENDC}")
-    print(f"{bcolors.OKRED}Error {e}{bcolors.ENDC}")
-    sys.exit(1)
-with open(output_file, 'w') as U:
-    for line in finput_file:
-        #HEADERS
-        headers = {'user-agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0','content-type' : 'application/x-www-form-urlencoded'} 
-        try:
-            #REQUEST
-            line2 = requests.get(line, headers=headers, allow_redirects=True, timeout=5)
-            if line2.ok:
-                #ALL OK REQUESTS (successfull, such as 200, 301)
-                print (f"{bcolors.OKGREEN}[+] [{bcolors.ENDC}",line2.status_code,f"{bcolors.OKGREEN}]{bcolors.ENDC}", line)
-                U.write(line)
-                U.write('\n')
-            else:
-                #ALL FAILED REQUESTS (such as 400-405 etc)
-                print (f"{bcolors.FAIL}[-] [{bcolors.ENDC}",line2.status_code,f"{bcolors.FAIL}]{bcolors.ENDC}", line)
-        except:
-                #THROW A "404" ERROR (If the domain could not be resolved, reached etc)
-                #I troubledshoot this extensivly and this was the easiest and most relayable solution
-            print (f"{bcolors.FAIL}[-] [{bcolors.ENDC}","404",f"{bcolors.FAIL}]{bcolors.ENDC}", line)
-            pass
+#ARGS
+def main(argv):
+    input_file = ''
+    output_file = ''
+    try:
+        opts, args = getopt.getopt(argv,"hi:o:",["input_file=","output_file="])
+    except getopt.GetoptError:
+        print (f"{bcolors.WARNING}isitup.py -i <input_file> -o <output_file>{bcolors.ENDC}")
+        print ("")
+        sys.exit(1)
+    for opt, arg in opts:
+        if opt == '-h':
+            print (f"{bcolors.OKGRAY}How-To:  {bcolors.WARNING}isitup.py -i {bcolors.OKCYAN}input_file{bcolors.WARNING} -o {bcolors.OKGREEN}output_file{bcolors.ENDC}")
+            print (f"{bcolors.OKGRAY}Exampel: {bcolors.WARNING}isitup.py -i {bcolors.OKCYAN}/root/usr/input.txt{bcolors.WARNING} -o {bcolors.OKGREEN}/root/usr/output.txt{bcolors.ENDC}")
+            print ("")
+            sys.exit(2)
+        elif opt in ("-i", "--input_file"):
+            input_file = arg
+        elif opt in ("-o", "--output_file"):
+            output_file = arg
+            #THE MAGIC
+            try:
+                finput_file = open(input_file,'r').read().splitlines()
+            except Exception as e:
+                print(f"{bcolors.OKRED}Please insert a valid file ({bcolors.WARNING}check file or directory{bcolors.OKRED}){bcolors.ENDC}")
+                print(f"{bcolors.OKRED}Error {e}{bcolors.ENDC}")
+                print("")
+                sys.exit(3)
+            with open(output_file, 'w') as U:
+                for line in finput_file:
+                    #HEADERS
+                    headers = {'user-agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0','content-type' : 'application/x-www-form-urlencoded'} 
+                    try:
+                        #REQUEST
+                        line2 = requests.get(line, headers=headers, allow_redirects=True, timeout=5)
+                        if line2.ok:
+                            #ALL OK REQUESTS (successfull, such as 200, 301)
+                            print (f"{bcolors.OKGREEN}[+] [{bcolors.ENDC}",line2.status_code,f"{bcolors.OKGREEN}]{bcolors.ENDC}", line)
+                            U.write(line)
+                            U.write('\n')
+                        else:
+                            #ALL FAILED REQUESTS (such as 400-405 etc)
+                            print (f"{bcolors.FAIL}[-] [{bcolors.ENDC}",line2.status_code,f"{bcolors.FAIL}]{bcolors.ENDC}", line)
+                    except:
+                            #THROW A "404" ERROR (If the domain could not be resolved, reached etc)
+                            #I troubledshoot this extensivly and this was the easiest and most relayable solution
+                        print (f"{bcolors.FAIL}[-] [{bcolors.ENDC}","404",f"{bcolors.FAIL}]{bcolors.ENDC}", line)
+                        pass
+
+if __name__ == "__main__":
+   main(sys.argv[1:])
