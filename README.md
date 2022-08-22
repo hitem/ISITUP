@@ -26,7 +26,7 @@ Note that ive built in the installation of Hping3, prips and Lolcat. Remove if y
 ```
 Before we start: Python version only works with domains (```example.com```) and with http/https (```https://example.com```). \
 It requiers a little more of you to integrate the python version, but once you do its solid! \
-When you luanch the ```isitup.py``` you are asked to enter a ```input``` and ```output``` file, note that the file must contain domainlist with the http/https prefixes, it will go ahead and send a request.get command using http socks and save the successfull requests to the ```outputfile```.
+When you luanch the ```isitup.py``` you are asked to enter a ```input``` and ```output``` file, note that the file must contain domainlist with the http/https prefixes, it will go ahead and send a request.get command using http socks and save the successfull requests to the ```outputfile```. \
 ![image](https://user-images.githubusercontent.com/8977898/185981647-ca686555-c160-4be0-9dd0-e6a70d9ed27c.png) \
 You can hardcore the input/output file to integrate the script into your reconnaissance tools, but in that case i could recommend ```httpx```
 

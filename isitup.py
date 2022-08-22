@@ -1,4 +1,15 @@
 #!/usr/bin/env python3
+
+# # # # # # # # # # # # # # # # # # # # # # # #
+# made by hitemSec
+# purpose: 
+#  Checks for domains!
+#  Started out with isup.sh, ended up with isitup.sh and now isitup.py
+#  ICMP was not enough, rewrote, added and reworked the whole thing! cred to @___0x00 (github: gitnepal)
+# github: https://github.com/hitem
+# twitter: https://twitter.com/hitemSec
+# # # # # # # # # # # # # # # # # # # # # # # #
+
 #IMPORTS
 import requests
 import json
@@ -19,12 +30,10 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-#VARIABLES TO SET
-#File (and path) to save domains with a successfull response to
-#Example: C:\users\myuser\desktop\subdomains.txt
-#urls_txt = 'urls.txt'
-
-#USER MANUAL INPUTS
+#VARIABLES & File inputs
+#For static input/output (incase you want to make this tool part of your reconnaissance chain) you have to replace input_file and output_file with these lines:
+#input_file = ('c:\\users\\myuser\\desktop\\test.txt')
+#output_file = ('c:\\users\\myuser\\desktop\\test2.txt')
 print(f"{bcolors.HEADER}  ▄ .▄▪  ▄▄▄▄▄▄▄▄ .• ▌ ▄ ·. .▄▄ · ▄▄▄ . ▄▄·  \n ██▪▐███ •██  ▀▄.▀··██ ▐███▪▐█ ▀. ▀▄.▀·▐█ ▌▪ \n ██▀▐█▐█· ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█·▄▀▀▀█▄▐▀▀▪▄██ ▄▄ \n ██▌▐▀▐█▌ ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▄▪▐█▐█▄▄▌▐███▌ \n ▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀▀  ▀▀▀ ·▀▀▀  {bcolors.ENDC}")
 print(f"{bcolors.OKGRAY}Improve your reconnaissance by{bcolors.ENDC} {bcolors.OKRED}hitemSec{bcolors.ENDC}")
 print("")
