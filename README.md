@@ -11,7 +11,8 @@ ICMP was not enough (from isup), so i rewrote, added and reused some parts and e
 > ./isitup.sh -h [--help]
 ```
 Outputs two files called ```validlist.txt``` & ```notvalid.txt``` into /tmp/ in scriptdirectory.<br>
-Change ports you want to ping (if any other then ```80```,```443```,```8080``` in the ```isitup.sh```).<br><br>
+Change ports you want to ping (if any other then ```80```,```443```,```8080``` in the ```isitup.sh```).\
+If you want to scan more ports, or all, add them manualy or change to ```hping3 -S -8 All -c 1 -w 1 $ENTRIES``` in the script.<br><br>
 ![image](https://i.imgur.com/T6qPNTI.gif)
 
 ## Dependencies
