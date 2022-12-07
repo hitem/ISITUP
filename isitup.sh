@@ -82,18 +82,18 @@ do
     if [[ $? -eq 0 ]];
     then
         echo -e "$IGREEN [+] $ENTRIES $RESET"
-        echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/valid-$FILENAME > /dev/null 2>&1
+        echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/valid-ips.txt > /dev/null 2>&1
     else
     	echo -e " $ENTRIES $RESET"
-        echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/notvalid-$FILENAME > /dev/null 2>&1
+        echo -e "$ENTRIES" | tee -a $CURRENT_PATH/tmp/notvalid-ips.txt> /dev/null 2>&1
     fi
 done
 echo -e ""
-echo -e "$BLUE Valid domains saved to: $ORANGE   tmp/valid-$FILENAME  $RESET"
-echo -e "$BLUE Invalid domains saved to: $ORANGE tmp/notvalid-$FILENAME  $RESET"
+echo -e "$BLUE Valid domains saved to: $ORANGE   tmp/valid-ips.txt  $RESET"
+echo -e "$BLUE Invalid domains saved to: $ORANGE tmp/notvalid-ips.txt  $RESET"
 echo -e ""
-ALIVEC=$(cat $CURRENT_PATH/tmp/valid-$FILENAME | sort -u | wc -l)
-DOWNC=$(cat $CURRENT_PATH/tmp/notvalid-$FILENAME | sort -u | wc -l)
+ALIVEC=$(cat $CURRENT_PATH/tmp/valid-ips.txt | sort -u | wc -l)
+DOWNC=$(cat $CURRENT_PATH/tmp/notvalid-ips.txt | sort -u | wc -l)
 TOTALC=$(cat $CURRENT_PATH/tmp/ManualScope.txt | sort -u | wc -l )
 echo -e "$BLUE [TOTAL]: ${TOTALC} $RESET     $IGREEN[ALIVE]: ${ALIVEC} $RESET     $IRED[DOWN]: ${DOWNC}"
 echo -e " ##################################################     [COMPLETED] " | lolcat
