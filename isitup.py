@@ -10,24 +10,25 @@
 # mastodon: @hitem@infosec.exchange 
 # # # # # # # # # # # # # # # # # # # # # # # #
 
-#IMPORTS
-import requests
+# Import necessary modules
 import sys
 import getopt
+import requests
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
-# COLORS
+# Disable insecure request warning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
+# Define a class for colored output
 class bcolors:
     HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
     OKGREEN = '\033[92m'
-    OKRED = '\033[91m'
+    OKCYAN = '\033[96m'
     OKGRAY = '\033[90m'
+    OKRED = '\033[91m'
     WARNING = '\033[93m'
     FAIL = '\033[91m'
     ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
 
 # VARIABLES & File inputs
 print(f"{bcolors.HEADER}  ▄ .▄▪  ▄▄▄▄▄▄▄▄ .• ▌ ▄ ·. .▄▄ · ▄▄▄ . ▄▄·  \n ██▪▐███ •██  ▀▄.▀··██ ▐███▪▐█ ▀. ▀▄.▀·▐█ ▌▪ \n ██▀▐█▐█· ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█·▄▀▀▀█▄▐▀▀▪▄██ ▄▄ \n ██▌▐▀▐█▌ ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▄▪▐█▐█▄▄▌▐███▌ \n ▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀▀  ▀▀▀ ·▀▀▀  {bcolors.ENDC}")
@@ -35,7 +36,7 @@ print(f"{bcolors.OKGRAY}Improve your reconnaissance by{bcolors.ENDC} {bcolors.OK
 print(f"{bcolors.OKGRAY}How-To: {bcolors.WARNING}isitup.py -h{bcolors.ENDC}")
 print("")
 
-# ARGS
+# Define the main function
 def main(argv):
     input_file = ''
     output_file = ''
@@ -76,7 +77,7 @@ def main(argv):
                             url = line
                         else:
                             url = f"http://{line}"
-                        response = requests.get(url, headers=headers, allow_redirects=True, timeout=5)
+                        response = requests.get(url, headers=headers, allow_redirects=True, timeout=5, verify=False)
                         status_code = response.status_code
                         if status_code == 200:
                             print(f"{bcolors.OKGREEN}[+] [{bcolors.ENDC}", status_code, f"{bcolors.OKGREEN}]{bcolors.ENDC}", url)
@@ -91,5 +92,6 @@ def main(argv):
                         print(f"{bcolors.FAIL}[-] [{bcolors.ENDC}", status_code, f"{bcolors.FAIL}]{bcolors.ENDC}", line)
                         pass
 
+# Call the main function
 if __name__ == "__main__":
     main(sys.argv[1:])
