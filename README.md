@@ -3,6 +3,12 @@
 ISITUP will make your reconnaissance more reliable and validate a chosen list of IP or Domains and output them into a valid and notvalid list.
 ICMP was not enough (from isup), so i rewrote, added and reused some parts and ended up with this TCP based bash script dubbed ISITUP!<br>
 
+# Install
+```bash
+git clone https://github.com/hitem/ISITUP.git
+cd ISITUP
+chmod -x isitup.sh
+```
 # Usage
 ## BASH
 ```bash
