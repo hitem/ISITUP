@@ -7,7 +7,7 @@ ICMP was not enough (from isup), so i rewrote, added and reused some parts and e
 ```bash
 git clone https://github.com/hitem/ISITUP.git
 cd ISITUP
-chmod -x isitup.sh
+chmod u+x isitup.sh
 ```
 # Usage
 ## BASH

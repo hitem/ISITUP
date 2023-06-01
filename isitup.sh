@@ -7,7 +7,7 @@
 #  Started out with isup.sh, ended up with isitup.sh
 #  ICMP was not enough, rewrote, added and reworked the whole thing! cred to @___0x00 (github: gitnepal)
 # github: https://github.com/hitem
-# twitter: https://twitter.com/hitemSec
+# mastodon: @hitem@infosec.exchange 
 # # # # # # # # # # # # # # # # # # # # # # # #
 
 
@@ -37,7 +37,7 @@ echo -e ""
 }
 
 hitemsecc () {
-echo -e "$GREEN [+] https://twitter.com/hitemSec"
+echo -e "$GREEN [+] @hitem@infosec.exchange"
 echo -e "$GREEN [+] https://github.com/hitem"
 }
 
