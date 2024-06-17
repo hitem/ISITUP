@@ -34,7 +34,7 @@ Note that ive built in the installation of Hping3, prips and Lolcat. Remove if y
 > ./isitup.py -i /root/usr/input.txt -o /root/usr/output.txt
 ```
 When you launch the ```isitup.py``` you have to supply the following arguments: ```-i <path to file>``` and ```-o <path to file>```, it will go ahead and send a request.get command using http socks and save the successful requests to the ```-o <path to file>```. \
-<img width="320" alt="Snag_20fad63" src="https://github.com/hitem/ISITUP/assets/8977898/364ca0d3-9067-4b43-9ccf-dd852ee8f3b9"> \
+<img width="447" alt="Snag_372d1e4" src="https://github.com/hitem/ISITUP/assets/8977898/048989b5-5c0f-41f6-83c6-ce27f3d973ac"> \
 You can integrate the script into your reconnaissance tools and use variables for input/output, but in that case i could recommend ```httpx``` (faster for large lists). \
 The script dont care if you have http/https or no prefix in the list input.
 
