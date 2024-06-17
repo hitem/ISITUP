@@ -3,7 +3,7 @@
 # # # # # # # # # # # # # # # # # # # # # # # #
 # made by hitemSec
 # purpose: 
-#  Checks if domains are responding.
+#  More reliant checks for domains-lists!
 # github: https://github.com/hitem
 # mastodon: @hitem@infosec.exchange 
 # # # # # # # # # # # # # # # # # # # # # # # #

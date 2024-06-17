@@ -4,12 +4,9 @@
 # made by hitemSec
 # purpose: 
 #  More reliant checks for domains and ip-lists!
-#  Started out with isup.sh, ended up with isitup.sh
-#  ICMP was not enough, rewrote, added and reworked the whole thing! cred to @___0x00 (github: gitnepal)
 # github: https://github.com/hitem
 # mastodon: @hitem@infosec.exchange 
 # # # # # # # # # # # # # # # # # # # # # # # #
-
 
 #COLORS
 BLUE='\033[94m'
