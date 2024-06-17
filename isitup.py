@@ -12,10 +12,11 @@
 import sys
 import getopt
 import requests
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
+from urllib3.exceptions import InsecureRequestWarning
+from urllib3 import disable_warnings
 
 # Disable insecure request warning
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+disable_warnings(InsecureRequestWarning)
 
 # Define a class for colored output
 class bcolors:
@@ -28,7 +29,7 @@ class bcolors:
     FAIL = '\033[91m'
     ENDC = '\033[0m'
 
-# Rainbow color and logo functions
+# Gradient color and logo functions
 def interpolate_color(color1, color2, factor):
     """Interpolate between two RGB colors."""
     return [int(color1[i] + (color2[i] - color1[i]) * factor) for i in range(3)]
@@ -45,15 +46,9 @@ def print_logo_and_instructions():
  ██▌▐▀▐█▌ ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▄▪▐█▐█▄▄▌▐███▌ 
  ▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀▀  ▀▀▀ ·▀▀▀  
     """
-
     colors = [
-        (255, 0, 0),      # Red
-        (255, 165, 0),    # Orange
-        (255, 255, 0),    # Yellow
-        (0, 255, 0),      # Green
-        (0, 127, 255),    # Blue
-        (0, 0, 255),      # Indigo
-        (139, 0, 255)     # Violet
+        (255, 0, 255),  # Purple
+        (0, 0, 255)     # Blue
     ]
 
     num_colors = len(colors)
@@ -77,9 +72,9 @@ def print_logo_and_instructions():
     {bcolors.OKGRAY}Improve your reconnaissance by{bcolors.ENDC} {bcolors.OKRED}hitemSec{bcolors.ENDC}
     {bcolors.OKGRAY}How-To: {bcolors.WARNING}.\\isitup.py -h{bcolors.ENDC}
     
-    {bcolors.OKGREEN}APIendpointlister - Usage Instructions{bcolors.ENDC}
-    {bcolors.WARNING}--------------------------------------{bcolors.ENDC}
-    {bcolors.OKGRAY}This tool checks for domains!{bcolors.ENDC}
+    {bcolors.OKGRAY}ISITUP - Usage Instructions{bcolors.ENDC}
+    {bcolors.WARNING}---------------------------{bcolors.ENDC}
+    {bcolors.OKGRAY}This tool checks if domains are up!{bcolors.ENDC}
 
     {bcolors.WARNING}Usage:{bcolors.ENDC}
     {bcolors.OKGRAY}python3 .\\isitup.py -i <input_file> -o <output_file>{bcolors.ENDC}
@@ -126,27 +121,31 @@ def main(argv):
                 for line in lines:
                     # HEADERS
                     headers = {
-                        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0',
+                        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:113.0) Gecko/20100101 Firefox/127.0',
                         'content-type': 'application/x-www-form-urlencoded'}
-                    try:
-                        if line.startswith("http://") or line.startswith("https://"):
-                            url = line
-                        else:
-                            url = f"http://{line}"
-                        response = requests.get(url, headers=headers, allow_redirects=True, timeout=5, verify=False)
-                        status_code = response.status_code
-                        if status_code == 200:
-                            print(f"{bcolors.OKGREEN}[+] [{bcolors.ENDC}", status_code, f"{bcolors.OKGREEN}]{bcolors.ENDC}", url)
-                            U.write(url)
-                            U.write('\n')
-                        else:
-                            print(f"{bcolors.FAIL}[-] [{bcolors.ENDC}", status_code, f"{bcolors.FAIL}]{bcolors.ENDC}", url)
-                    except requests.exceptions.RequestException:
-                        print(f"{bcolors.FAIL}[-] [{bcolors.ENDC}", status_code, f"{bcolors.FAIL}]{bcolors.ENDC}", line)
-                        pass
-                    except Exception:
-                        print(f"{bcolors.FAIL}[-] [{bcolors.ENDC}", status_code, f"{bcolors.FAIL}]{bcolors.ENDC}", line)
-                        pass
+                    urls_to_try = []
+                    if line.startswith("http://") or line.startswith("https://"):
+                        urls_to_try.append(line)
+                    else:
+                        urls_to_try.append(f"https://{line}")
+                        urls_to_try.append(f"http://{line}")
+
+                    response = None
+                    for url in urls_to_try:
+                        try:
+                            response = requests.get(url, headers=headers, allow_redirects=True, timeout=5, verify=False)
+                            status_code = response.status_code
+                            if status_code == 200:
+                                print(f"{bcolors.OKGREEN}[+] [{bcolors.ENDC}", status_code, f"{bcolors.OKGREEN}]{bcolors.ENDC}", url)
+                                U.write(url)
+                                U.write('\n')
+                                break
+                            else:
+                                print(f"{bcolors.FAIL}[-] [{bcolors.ENDC}", status_code, f"{bcolors.FAIL}]{bcolors.ENDC}", url)
+                        except requests.exceptions.RequestException as e:
+                            print(f"{bcolors.FAIL}[-] [Error]{bcolors.ENDC} {url} - {str(e)}")
+                        except Exception as e:
+                            print(f"{bcolors.FAIL}[-] [Error]{bcolors.ENDC} {url} - {str(e)}")
 
 # Call the main function
 if __name__ == "__main__":
