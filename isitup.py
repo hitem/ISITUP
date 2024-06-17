@@ -3,9 +3,7 @@
 # # # # # # # # # # # # # # # # # # # # # # # #
 # made by hitemSec
 # purpose: 
-#  Checks for domains!
-#  Started out with isup.sh, ended up with isitup.sh and now isitup.py
-#  ICMP was not enough, rewrote, added and reworked the whole thing! cred to @___0x00 (github: gitnepal)
+#  Checks if domains are responding.
 # github: https://github.com/hitem
 # mastodon: @hitem@infosec.exchange 
 # # # # # # # # # # # # # # # # # # # # # # # #
@@ -30,11 +28,71 @@ class bcolors:
     FAIL = '\033[91m'
     ENDC = '\033[0m'
 
+# Rainbow color and logo functions
+def interpolate_color(color1, color2, factor):
+    """Interpolate between two RGB colors."""
+    return [int(color1[i] + (color2[i] - color1[i]) * factor) for i in range(3)]
+
+def rgb_to_ansi(r, g, b):
+    """Convert RGB to ANSI color code."""
+    return f'\033[38;2;{r};{g};{b}m'
+
+def print_logo_and_instructions():
+    logo = """
+  ▄ .▄▪  ▄▄▄▄▄▄▄▄ .• ▌ ▄ ·. .▄▄ · ▄▄▄ . ▄▄·  
+ ██▪▐███ •██  ▀▄.▀··██ ▐███▪▐█ ▀. ▀▄.▀·▐█ ▌▪ 
+ ██▀▐█▐█· ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█·▄▀▀▀█▄▐▀▀▪▄██ ▄▄ 
+ ██▌▐▀▐█▌ ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▄▪▐█▐█▄▄▌▐███▌ 
+ ▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀▀  ▀▀▀ ·▀▀▀  
+    """
+
+    colors = [
+        (255, 0, 0),      # Red
+        (255, 165, 0),    # Orange
+        (255, 255, 0),    # Yellow
+        (0, 255, 0),      # Green
+        (0, 127, 255),    # Blue
+        (0, 0, 255),      # Indigo
+        (139, 0, 255)     # Violet
+    ]
+
+    num_colors = len(colors)
+    rainbow_logo = ""
+    color_index = 0
+    num_chars = sum(len(line) for line in logo.split("\n"))
+    for char in logo:
+        if char != " " and char != "\n":
+            factor = (color_index / num_chars) * (num_colors - 1)
+            idx = int(factor)
+            next_idx = min(idx + 1, num_colors - 1)
+            local_factor = factor - idx
+            color = interpolate_color(colors[idx], colors[next_idx], local_factor)
+            rainbow_logo += rgb_to_ansi(*color) + char
+            color_index += 1
+        else:
+            rainbow_logo += char
+
+    instructions = f"""
+    {rainbow_logo}{bcolors.ENDC}
+    {bcolors.OKGRAY}Improve your reconnaissance by{bcolors.ENDC} {bcolors.OKRED}hitemSec{bcolors.ENDC}
+    {bcolors.OKGRAY}How-To: {bcolors.WARNING}.\\isitup.py -h{bcolors.ENDC}
+    
+    {bcolors.OKGREEN}APIendpointlister - Usage Instructions{bcolors.ENDC}
+    {bcolors.WARNING}--------------------------------------{bcolors.ENDC}
+    {bcolors.OKGRAY}This tool checks for domains!{bcolors.ENDC}
+
+    {bcolors.WARNING}Usage:{bcolors.ENDC}
+    {bcolors.OKGRAY}python3 .\\isitup.py -i <input_file> -o <output_file>{bcolors.ENDC}
+    
+    {bcolors.WARNING}Examples:{bcolors.ENDC}
+    {bcolors.OKGRAY}isitup.py -i {bcolors.OKCYAN}input_file{bcolors.WARNING} -o {bcolors.OKGREEN}output_file{bcolors.ENDC}
+    {bcolors.OKGRAY}Example: {bcolors.WARNING}.\\isitup.py -i {bcolors.OKCYAN}/root/usr/input.txt{bcolors.WARNING} -o {bcolors.OKGREEN}/root/usr/output.txt{bcolors.ENDC}
+    {bcolors.ENDC}
+    """
+    print(instructions)
+
 # VARIABLES & File inputs
-print(f"{bcolors.HEADER}  ▄ .▄▪  ▄▄▄▄▄▄▄▄ .• ▌ ▄ ·. .▄▄ · ▄▄▄ . ▄▄·  \n ██▪▐███ •██  ▀▄.▀··██ ▐███▪▐█ ▀. ▀▄.▀·▐█ ▌▪ \n ██▀▐█▐█· ▐█.▪▐▀▀▪▄▐█ ▌▐▌▐█·▄▀▀▀█▄▐▀▀▪▄██ ▄▄ \n ██▌▐▀▐█▌ ▐█▌·▐█▄▄▌██ ██▌▐█▌▐█▄▪▐█▐█▄▄▌▐███▌ \n ▀▀▀ ·▀▀▀ ▀▀▀  ▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀▀  ▀▀▀ ·▀▀▀  {bcolors.ENDC}")
-print(f"{bcolors.OKGRAY}Improve your reconnaissance by{bcolors.ENDC} {bcolors.OKRED}hitemSec{bcolors.ENDC}")
-print(f"{bcolors.OKGRAY}How-To: {bcolors.WARNING}isitup.py -h{bcolors.ENDC}")
-print("")
+print_logo_and_instructions()
 
 # Define the main function
 def main(argv):
@@ -48,9 +106,7 @@ def main(argv):
         sys.exit(1)
     for opt, arg in opts:
         if opt == '-h':
-            print(f"{bcolors.OKGRAY}How-To:  {bcolors.WARNING}isitup.py -i {bcolors.OKCYAN}input_file{bcolors.WARNING} -o {bcolors.OKGREEN}output_file{bcolors.ENDC}")
-            print(f"{bcolors.OKGRAY}Example: {bcolors.WARNING}isitup.py -i {bcolors.OKCYAN}/root/usr/input.txt{bcolors.WARNING} -o {bcolors.OKGREEN}/root/usr/output.txt{bcolors.ENDC}")
-            print("")
+            print_logo_and_instructions()
             sys.exit(2)
         elif opt in ("-i", "--input_file"):
             input_file = arg
