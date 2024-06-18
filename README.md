@@ -12,9 +12,14 @@ chmod u+x isitup.sh
 # Usage
 ## BASH
 ```bash
+LINUX
 > ./isitup.sh list.txt
 > ./isitup.sh -s [--scope]
 > ./isitup.sh -h [--help]
+
+EXAMPLES
+> ./isitup.sh -s 10.0.1.0/1
+> ./isitup.sh bunchofurls.txt
 ```
 Outputs two files called ```validlist.txt``` & ```notvalid.txt``` into /tmp/ in scriptdirectory.<br>
 Change ports you want to ping (if any other then ```80```,```443```,```8080``` in the ```isitup.sh```).\
@@ -32,7 +37,10 @@ Note that ive built in the installation of Hping3, prips and Lolcat. Remove if y
 LINUX
 > ./isitup.py -h
 > ./isitup.py -i [--input_file] -o [--output_file]
+
+EXAMPLE
 > ./isitup.py -i /root/usr/input.txt -o /root/usr/output.txt
+
 
 WINDOWS
 > pip install requests urllib3
