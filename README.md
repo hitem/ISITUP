@@ -29,12 +29,16 @@ Note that ive built in the installation of Hping3, prips and Lolcat. Remove if y
 
 ## Bonus: Python
 ```python
+LINUX
 > ./isitup.py -h
 > ./isitup.py -i [--input_file] -o [--output_file]
 > ./isitup.py -i /root/usr/input.txt -o /root/usr/output.txt
+
+WINDOWS
+> pip install requests urllib3
+> python3 .\isitup.py -h
 ```
-When you launch the ```isitup.py``` you have to supply the following arguments: ```-i <path to file>``` and ```-o <path to file>```, it will go ahead and send a request.get command using http socks and save the successful requests to the ```-o <path to file>```. \
+When you launch the ```isitup.py``` you have to supply the following arguments: ```-i <path to file>``` and ```-o <path to file>```, it will go ahead and send a request.get command using http socks and save the successful requests to the ```-o <path to file>```. Note that this tool dont care if you have ```https://```, ```http://``` or ```no prefix``` on the url in the inputfile - if no prefix it will try both just to be sure. \
 <img width="447" alt="Snag_372d1e4" src="https://github.com/hitem/ISITUP/assets/8977898/048989b5-5c0f-41f6-83c6-ce27f3d973ac"> \
-You can integrate the script into your reconnaissance tools and use variables for input/output, but in that case i could recommend ```httpx``` (faster for large lists). \
-The script dont care if you have http/https or no prefix in the list input.
+You can integrate the script into your reconnaissance tools and use variables for input/output (xargs or cat -> pipe), but in that case i could recommend ```httpx``` (faster for large lists).
 
