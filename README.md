@@ -29,7 +29,7 @@ If you want to scan more ports, or all, add them manualy or change to ```hping3 
 ## Dependencies
 Note that ive built in the installation of Hping3, prips and Lolcat. Remove if you have those already.<br>
 ```bash
-> sudo apt-get -y install lolcat hping3 prips
+> sudo apt-get -y install lolcat hping3 prips parallel
 ```
 
 
