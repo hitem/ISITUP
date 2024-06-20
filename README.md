@@ -81,3 +81,5 @@ The ISITUP tool then checks if domains are up and organizes the results based on
 6. **Error Handling**
    - URLs that encounter errors during the request process are recorded separately.
    - Output File: `<output_file_prefix>_errors.txt`
+<img width="273" alt="Snag_5c7a946" src="https://github.com/hitem/ISITUP/assets/8977898/55c64240-ebc2-4041-affe-a57a704db55f">
+
