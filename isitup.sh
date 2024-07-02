@@ -43,10 +43,10 @@ check_host() {
     local host="$1"
     if hping3 -S -p 80,443,8080 -c 1 -w 1 $host > /dev/null 2>&1; then
         echo -e "$IGREEN [+] $host $RESET"
-        echo "$host" >> "$CURRENT_PATH/tmp/valid-ips.txt"
+        echo "$host" >> "$CURRENT_PATH/tmp/valid-iplist.txt"
     else
         echo -e "$RED [-] $host $RESET"
-        echo "$host" >> "$CURRENT_PATH/tmp/notvalid-ips.txt"
+        echo "$host" >> "$CURRENT_PATH/tmp/notvalid-iplist.txt"
     fi
 }
 
