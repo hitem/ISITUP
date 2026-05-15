@@ -27,7 +27,6 @@ CURRENT_PATH=$(pwd)
 FILENAME=$(basename "$TARGET")
 
 #DEPENDENCIES
-#sudo apt-get -y install lolcat prips parallel netcat-openbsd
 missing_deps=()
 
 command -v lolcat >/dev/null 2>&1 || missing_deps+=("lolcat")
@@ -36,9 +35,10 @@ command -v parallel >/dev/null 2>&1 || missing_deps+=("parallel")
 command -v nc >/dev/null 2>&1 || missing_deps+=("netcat-openbsd")
 
 if [ ${#missing_deps[@]} -gt 0 ]; then
-    echo "[+] Installing missing dependencies: ${missing_deps[*]}"
-    sudo apt-get update -qq
-    sudo apt-get install -qq -y "${missing_deps[@]}" >/dev/null
+    echo -e "$RED [!] Missing dependencies: ${missing_deps[*]} $RESET"
+    echo -e "$ORANGE [!] Install them manually with: $RESET"
+    echo "sudo apt-get install -y ${missing_deps[*]}"
+    exit 1
 fi
 
 hitemsec () {
